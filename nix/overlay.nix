@@ -9,7 +9,7 @@ let
   clawdisBundle = super.callPackage ./packages/clawdis-batteries.nix {
     clawdis-gateway = clawdisGateway;
     clawdis-app = clawdisApp;
-    extendedTools = toolSets.extended;
+    extendedTools = toolSets.base;
   };
 in {
   clawdis-gateway = clawdisGateway;
