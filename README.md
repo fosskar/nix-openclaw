@@ -87,7 +87,7 @@ This is a Telegram-only, headless gateway. The macOS app is separate.
 Build the image with Determinate Nix (uses a Linux builder under the hood):
 
 ```bash
-nix build .#clawdbot-docker --system x86_64-linux
+nix build .#clawdbot-docker --system aarch64-linux
 docker load < result
 ```
 
@@ -121,9 +121,9 @@ Use this for the simplest setup. For richer config (per‑group overrides), use
       apiKeyFile = "/run/agenix/anthropic-api-key"; # any file path works
     };
 
-    # Built‑ins (tools + skills) shipped via nix-stepiete-tools.
+    # Built‑ins (tools + skills) shipped via nix-steipete-tools.
     plugins = [
-      { source = "github:clawdbot/nix-stepiete-tools?dir=tools/summarize"; }
+      { source = "github:clawdbot/nix-steipete-tools?dir=tools/summarize"; }
     ];
   };
 }
@@ -134,7 +134,7 @@ Then: `home-manager switch --flake .#youruser`
 ## First‑party plugin toggles
 
 nix‑clawdbot exposes named switches for first‑party plugins (from
-`clawdbot/nix-stepiete-tools`). Defaults: `summarize` and `peekaboo` are on,
+`clawdbot/nix-steipete-tools`). Defaults: `summarize` and `peekaboo` are on,
 everything else is off.
 
 ```nix
@@ -191,11 +191,11 @@ Docs are managed from `./documents` and symlinked into the workspace on each swi
 
       launchd.enable = true;
 
-      # Plugins (prod: pinned GitHub). Built‑ins are via nix-stepiete-tools.
+      # Plugins (prod: pinned GitHub). Built‑ins are via nix-steipete-tools.
       # MVP target: repo pointers resolve to tools + skills automatically.
       plugins = [
-        { source = "github:clawdbot/nix-stepiete-tools?dir=tools/oracle"; }
-        { source = "github:clawdbot/nix-stepiete-tools?dir=tools/peekaboo"; }
+        { source = "github:clawdbot/nix-steipete-tools?dir=tools/oracle"; }
+        { source = "github:clawdbot/nix-steipete-tools?dir=tools/peekaboo"; }
         { source = "github:joshp123/xuezh"; }
         {
           source = "github:joshp123/padel-cli";

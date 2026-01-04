@@ -68,7 +68,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Telegram-first AI gateway (Clawdbot)";
     homepage = "https://github.com/clawdbot/clawdbot";
     license = licenses.mit;
-    platforms = platforms.darwin;
+    platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "clawdbot";
   };
 })
