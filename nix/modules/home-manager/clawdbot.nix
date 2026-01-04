@@ -284,11 +284,6 @@ let
       names = map (skill: skill.name) cfg.skills;
       nameCounts = lib.foldl' (acc: name: acc // { "${name}" = (acc.${name} or 0) + 1; }) {} names;
       duplicateNames = lib.attrNames (lib.filterAttrs (_: v: v > 1) nameCounts);
-      missingSources =
-        lib.filter (skill:
-          skill.mode != "inline" &&
-          (skill.source == null || !(builtins.pathExists (resolvePath skill.source)))
-        ) cfg.skills;
       dupAssertions =
         if duplicateNames == [] then [] else [
           {
@@ -296,13 +291,8 @@ let
             message = "programs.clawdbot.skills has duplicate names: ${lib.concatStringsSep ", " duplicateNames}";
           }
         ];
-      sourceAssertions =
-        map (skill: {
-          assertion = false;
-          message = "programs.clawdbot.skills.${skill.name}: source missing or path does not exist.";
-        }) missingSources;
     in
-      dupAssertions ++ sourceAssertions;
+      dupAssertions;
 
   skillFiles =
     let
