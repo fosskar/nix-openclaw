@@ -98,6 +98,50 @@ Nix is a **declarative package manager**. Instead of running commands to install
 
 ## Quick Start
 
+### Option 1: Let your agent set it up (recommended)
+
+Copy this entire block and paste it to Claude, Cursor, or your preferred AI assistant:
+
+```text
+I want to set up nix-clawdbot on my machine (macOS or Linux).
+
+Repository: github:clawdbot/nix-clawdbot
+
+What nix-clawdbot is:
+- Batteries-included Nix package for Clawdbot (AI assistant gateway)
+- Installs gateway + tools everywhere; macOS app only on macOS
+- Runs as a launchd service on macOS, systemd user service on Linux
+
+What I need you to do:
+1. Check if Determinate Nix is installed (if not, install it)
+2. Create a local flake at ~/code/clawdbot-local using templates/agent-first/flake.nix
+3. Create a docs dir next to the config (e.g., ~/code/clawdbot-local/documents) with AGENTS.md, SOUL.md, TOOLS.md
+   - If ~/.clawdbot/workspace already has these files, adopt them into the documents dir first
+4. Help me create a Telegram bot (@BotFather) and get my chat ID (@userinfobot)
+5. Set up secrets (bot token, Anthropic key) - plain files at ~/.secrets/ is fine
+6. Fill in the template placeholders and run home-manager switch
+7. Verify: service running, bot responds to messages
+
+My setup:
+- OS: [macOS / Linux]
+- CPU: [arm64 / x86_64]
+- System: [aarch64-darwin / x86_64-darwin / x86_64-linux]
+- Home Manager config name: [FILL IN or "I don't have Home Manager yet"]
+
+Reference the README and templates/agent-first/flake.nix in the repo for the module options.
+```
+
+Your agent will install Nix, create your config, and get Clawdbot running. You just answer its questions.
+
+**What happens next:**
+1. Your agent sets everything up and runs `home-manager switch`
+2. You message your Telegram bot for the first time
+3. Clawdbot runs its **bootstrap ritual** - it asks you playful questions: *"Who am I? What am I? Who are you?"* - to learn its identity and yours
+4. Once you've named it and introduced yourself, the bootstrap is done. You're up and running.
+
+<details>
+<summary><strong>Option 2: Manual setup</strong></summary>
+
 ### macOS (Home Manager + launchd)
 
 1. Install Determinate Nix.
@@ -142,6 +186,8 @@ Nix is a **declarative package manager**. Instead of running commands to install
    systemctl --user status clawdbot-gateway
    journalctl --user -u clawdbot-gateway -f
    ```
+
+</details>
 
 ---
 
