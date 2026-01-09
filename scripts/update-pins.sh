@@ -35,8 +35,8 @@ if [[ -z "$source_hash" ]]; then
   exit 1
 fi
 
-perl -0pi -e "s/rev = \"[^\"]+\";/rev = \"${latest_sha}\";/" "$source_file"
-perl -0pi -e "s/hash = \"[^\"]+\";/hash = \"${source_hash}\";/" "$source_file"
+perl -0pi -e "s|rev = \"[^\"]+\";|rev = \"${latest_sha}\";|" "$source_file"
+perl -0pi -e "s|hash = \"[^\"]+\";|hash = \"${source_hash}\";|" "$source_file"
 
 release_tag=$(gh api /repos/clawdbot/clawdbot/releases/latest --jq '.tag_name')
 if [[ -z "$release_tag" ]]; then
@@ -69,9 +69,9 @@ if [[ -z "$app_hash" ]]; then
 fi
 
 app_version="${release_tag#v}"
-perl -0pi -e "s/version = \"[^\"]+\";/version = \"${app_version}\";/" "$app_file"
-perl -0pi -e "s#url = \"[^\"]+\";#url = \"${app_url}\";#" "$app_file"
-perl -0pi -e "s/hash = \"[^\"]+\";/hash = \"${app_hash}\";/" "$app_file"
+perl -0pi -e "s|version = \"[^\"]+\";|version = \"${app_version}\";|" "$app_file"
+perl -0pi -e "s|url = \"[^\"]+\";|url = \"${app_url}\";|" "$app_file"
+perl -0pi -e "s|hash = \"[^\"]+\";|hash = \"${app_hash}\";|" "$app_file"
 
 build_log=$(mktemp)
 if ! nix build .#clawdbot-gateway --accept-flake-config >"$build_log" 2>&1; then
@@ -81,7 +81,7 @@ if ! nix build .#clawdbot-gateway --accept-flake-config >"$build_log" 2>&1; then
     rm -f "$build_log"
     exit 1
   fi
-  perl -0pi -e "s/pnpmDepsHash = \"[^\"]+\";/pnpmDepsHash = \"${pnpm_hash}\";/" "$source_file"
+  perl -0pi -e "s|pnpmDepsHash = \"[^\"]+\";|pnpmDepsHash = \"${pnpm_hash}\";|" "$source_file"
   nix build .#clawdbot-gateway --accept-flake-config
 fi
 rm -f "$build_log"
