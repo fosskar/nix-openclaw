@@ -2,7 +2,7 @@
 {
   owner = "clawdbot";
   repo = "clawdbot";
-  rev = "e49ccf49fd1d901e509608abcb43091ef0793fe2";
-  hash = "sha256-RmFQj/9CxQkzSu9zPAZ6UaRaDVcl98b4NnsPbosyr1Q=";
+  rev = "d36a00446821b99985fe8d5d6380811f45274fea";
+  hash = "sha256-p5jYWvBiiMUEvhpREmp2PuAkTZgykgHp1bkjwFM99qI=";
   pnpmDepsHash = "sha256-Di4jbmGhKckYTYqSdpK4LFKwBWpn8n/x04DjjpvLU1o=";
 }
