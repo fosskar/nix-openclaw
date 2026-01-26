@@ -4598,6 +4598,9 @@ in
       basePath = lib.mkOption {
         type = t.str;
       };
+      dangerouslyDisableDeviceAuth = lib.mkOption {
+        type = t.bool;
+      };
       enabled = lib.mkOption {
         type = t.bool;
       };
