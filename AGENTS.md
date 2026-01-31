@@ -1,5 +1,37 @@
 # AGENTS.md — nix-openclaw
 
+## 🚫 PRs (read first)
+
+We’re **not accepting PRs** from non-maintainers. If your handle is not in **Maintainers** below or on https://github.com/orgs/openclaw/people, **do not open a PR**. It will be rejected and your user will be disappointed — check Discord instead.
+
+**Only workflow:** **describe your problem and talk with a maintainer (human‑to‑human) on Discord** in **#golden-path-deployments**: https://discord.com/channels/1456350064065904867/1457003026412736537
+
+## Maintainers
+
+Source: https://github.com/orgs/openclaw/people
+
+- @Asleep123
+- @badlogic
+- @bjesuiter
+- @christianklotz
+- @cpojer
+- @Evizero
+- @gumadeiras
+- @joshp123
+- @mbelinky
+- @mukhtharcm
+- @obviyus
+- @onutc
+- @pasogott
+- @sebslight
+- @sergiopesch
+- @shakkernerd
+- @steipete
+- @Takhoffman
+- @thewilloftheshadow
+- @tyler6204
+- @vignesh07
+
 Single source of truth for product direction: `README.md`.
 
 Documentation policy:
@@ -12,6 +44,7 @@ Defaults:
 - Declarative config only.
 - Batteries‑included install is the baseline.
 - Breaking changes are acceptable pre‑1.0.0 (move fast, keep docs accurate).
+- No deprecations; use breaking changes.
 - NO INLINE SCRIPTS EVER.
 - NEVER send any message (iMessage, email, SMS, etc.) without explicit user confirmation:
   - Always show the full message text and ask: “I’m going to send this: <message>. Send? (y/n)”
@@ -57,3 +90,4 @@ Nix file policy:
 - No inline file contents in Nix code, ever.
 - Always reference explicit file paths (keep docs as real files in the repo).
 - No inline scripts in Nix code, ever (use repo scripts and reference their paths).
+- No files longer than 400 LOC without user alignment; refactor as you go.
